@@ -19,7 +19,6 @@ export const checkPrime = async (num: number): Promise<boolean> => {
             return Promise.resolve(response.data.isPrime);
         }
     } catch (err) {
-        console.log('eipä onnistunu: ', err);
         return Promise.reject();
     }
 };

@@ -9,20 +9,29 @@ const PrimeSuccessStatus: FC<ILatestResponse> = (props: ILatestResponse): ReactE
     const getStatusText = (): ReactElement | null => {
         if (props.error) {
             const errorText = 'An error occurred. Please check your inputs to be integer (whole) numbers and try again';
-            return  (
-                <><CancelIcon className="prime-success-status-icon" />{errorText}</>
+            return (
+                <>
+                    <CancelIcon className="prime-success-status-icon" />
+                    {errorText}
+                </>
             );
         }
 
         if (!props.isPrime) {
             const notPrimeStatusText = `Number ${props.number} is not a prime!`;
             return (
-                <><CancelIcon className="prime-success-status-icon" />{notPrimeStatusText}</>
+                <>
+                    <CancelIcon className="prime-success-status-icon" />
+                    {notPrimeStatusText}
+                </>
             );
         } else {
             const isPrimeStatusText = `Number ${props.number} is a prime!`;
             return (
-                <><CheckCircleIcon className="prime-success-status-icon" />{isPrimeStatusText}</>
+                <>
+                    <CheckCircleIcon className="prime-success-status-icon" />
+                    {isPrimeStatusText}
+                </>
             );
         }
     };
@@ -38,7 +47,6 @@ const PrimeSuccessStatus: FC<ILatestResponse> = (props: ILatestResponse): ReactE
             </>
         );
     }
-
 };
 
 export default PrimeSuccessStatus;

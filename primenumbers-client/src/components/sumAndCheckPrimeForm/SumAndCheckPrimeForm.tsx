@@ -13,20 +13,20 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
         {
             value: '',
             id: uuid(),
-            error: false
+            error: false,
         },
     ]);
     const [submitDisabled, setSubmitDisabled] = useState<boolean>(true);
-    const [latestResponse, setLatestResponse] = useState<ILatestResponse >({ error: false });
+    const [latestResponse, setLatestResponse] = useState<ILatestResponse>({ error: false });
 
     const getValuesFromInputs = (inputs: Array<IDynamicNumberInput>): Array<string> => {
-        return inputs.map(input => {
+        return inputs.map((input) => {
             return input.value;
         });
     };
 
     const addNewNumberInput = (): void => {
-        const shallowCopy = [...numberInputs].concat({value: '', id: uuid(), error: false});
+        const shallowCopy = [...numberInputs].concat({ value: '', id: uuid(), error: false });
 
         setNumberInputs(shallowCopy);
         setSubmitDisabled(!isSomeInputInvalid(shallowCopy));
@@ -34,7 +34,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
 
     const setValueForNumberInput = (event: ChangeEvent<HTMLInputElement>): void => {
         const shallowCopy = [...numberInputs];
-        const index = numberInputs.findIndex(e => e.id === event.target.id);
+        const index = numberInputs.findIndex((e) => e.id === event.target.id);
 
         shallowCopy[index].value = event.target.value;
         shallowCopy[index].error = !isInputValid(event.target.value);
@@ -44,7 +44,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
     };
 
     const isSomeInputInvalid = (inputArray: Array<IDynamicNumberInput>): boolean => {
-        return !inputArray.some(input => (!Number.isInteger(+input.value) || input.value === ''));
+        return !inputArray.some((input) => !Number.isInteger(+input.value) || input.value === '');
     };
 
     const isInputValid = (value: string): boolean => {
@@ -58,20 +58,20 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
             setLatestResponse({
                 isPrime: res.isPrime,
                 error: false,
-                number: res.number
+                number: res.number,
             });
         } catch (err) {
-            setLatestResponse({error: true});
+            setLatestResponse({ error: true });
         }
     };
 
     const removeNumberInput = (id: string): void => {
         const shallowCopy = [...numberInputs];
-        setNumberInputs(shallowCopy.filter(input => input.id !== id));
+        setNumberInputs(shallowCopy.filter((input) => input.id !== id));
     };
 
     const deleteButtonForInput = (input: IDynamicNumberInput, index: number): ReactElement | null => {
-        if (index === 0)  {
+        if (index === 0) {
             return null;
         }
 
@@ -94,7 +94,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
                     </Typography>
                     <Box onSubmit={onSubmit} component="form" autoComplete="off">
                         <Box className="check-and-sum-prime-inputs" component="div">
-                            {numberInputs.map((input, index) => 
+                            {numberInputs.map((input, index) => (
                                 <Stack direction="row" alignItems="center" spacing={2} key={'stack-' + input.id}>
                                     <TextField
                                         key={input.id}
@@ -103,7 +103,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
                                         className="check-and-sum-prime-input"
                                         label="Input number"
                                         type="number"
-                                        InputLabelProps ={{shrink: true}}
+                                        InputLabelProps={{ shrink: true }}
                                         variant="filled"
                                         value={input.value}
                                         onChange={setValueForNumberInput}
@@ -111,7 +111,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
                                     />
                                     {deleteButtonForInput(input, index)}
                                 </Stack>
-                            )}
+                            ))}
                         </Box>
                         <IconButton color="success" aria-label="Add an input field" component="span" onClick={addNewNumberInput}>
                             <AddBoxIcon />
@@ -120,7 +120,11 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
                             <Button variant="contained" type="submit" color="secondary" disabled={submitDisabled}>
                                 Check
                             </Button>
-                            <PrimeSuccessStatus isPrime={latestResponse.isPrime} number={latestResponse.number} error={latestResponse.error} />
+                            <PrimeSuccessStatus
+                                isPrime={latestResponse.isPrime}
+                                number={latestResponse.number}
+                                error={latestResponse.error}
+                            />
                         </CardActions>
                     </Box>
                 </CardContent>

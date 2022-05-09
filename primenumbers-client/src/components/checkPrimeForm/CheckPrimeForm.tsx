@@ -6,7 +6,7 @@ import PrimeSuccessStatus from '../primeSuccessText/PrimeSuccessText';
 import { ILatestResponse, INumberInput } from '../../models/form.models';
 
 const CheckPrimeForm: FC = (): ReactElement => {
-    const [primeCandidate, setPrimeCandidate] = useState<INumberInput>({value: '', error: false});
+    const [primeCandidate, setPrimeCandidate] = useState<INumberInput>({ value: '', error: false });
     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false);
     const [latestPrimeStatus, setLatestPrimeStatus] = useState<ILatestResponse>({ error: false });
 
@@ -28,7 +28,7 @@ const CheckPrimeForm: FC = (): ReactElement => {
     const onPrimeCandidateChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setPrimeCandidate({
             value: event.target.value,
-            error: !isInputValid(event.target.value)
+            error: !isInputValid(event.target.value),
         });
         setSubmitEnabled(Number.isInteger(+event.target.value) && event.target.value !== '');
     };
@@ -61,7 +61,11 @@ const CheckPrimeForm: FC = (): ReactElement => {
                             <Button variant="contained" type="submit" color="secondary" disabled={!submitEnabled}>
                                 Check
                             </Button>
-                            <PrimeSuccessStatus isPrime={latestPrimeStatus.isPrime} number={latestPrimeStatus.number} error={latestPrimeStatus.error}/>
+                            <PrimeSuccessStatus
+                                isPrime={latestPrimeStatus.isPrime}
+                                number={latestPrimeStatus.number}
+                                error={latestPrimeStatus.error}
+                            />
                         </CardActions>
                     </Box>
                 </CardContent>
