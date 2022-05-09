@@ -1,0 +1,16 @@
+.check-and-sum-prime-card {
+    width: 70%;
+    margin-bottom: 3rem;
+}
+
+.check-and-sum-prime-inputs {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+.check-and-sum-prime-input {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 90%;
+}

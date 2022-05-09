@@ -1,0 +1,9 @@
+.prime-success-status-text {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem !important;
+}
+
+.prime-success-status-icon {
+    margin-right: 0.5rem;
+}

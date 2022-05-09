@@ -1,0 +1,4 @@
+/backend/node_modules
+/backend/dist
+/primenumbers-client/node_modules
+/primenumbers-client/build
