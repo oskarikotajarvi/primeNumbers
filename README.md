@@ -16,3 +16,8 @@ GET http://localhost/myapi/?action=checkprime&number=89
 -> {"isPrime": true}
 
 In this repo the challenge is implemented with NodeJS (express), ReactJS and Typescript
+
+## Running the applications
+At the moment there are no docker images created for the applications so the apps must be started by hand.
+This can be done by running `npm run start:dev` in the `backend` folder. This starts the backend service running on port `5050`by default.
+The frontend can be started by `npm run start:dev` in the `primenumber-client` folder. The frontend starts in the default port `3000`.
