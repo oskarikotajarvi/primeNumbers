@@ -68,6 +68,7 @@ const SumAndCheckPrimeForm: FC = (): ReactElement => {
     const removeNumberInput = (id: string): void => {
         const shallowCopy = [...numberInputs];
         setNumberInputs(shallowCopy.filter((input) => input.id !== id));
+        setSubmitDisabled(!isSomeInputInvalid(shallowCopy));
     };
 
     const deleteButtonForInput = (input: IDynamicNumberInput, index: number): ReactElement | null => {
